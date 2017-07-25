@@ -1,0 +1,12 @@
+---
+applications:
+- name: myapp
+  memory: 128MB
+  disk_quota: 256MB
+  random-route: true
+  buildpack: python_buildpack
+  command: python hello.py
+  instances: 2
+env:
+  APP_ENV: test
+  FILE_LOCATION: /home/vcap/app/files
