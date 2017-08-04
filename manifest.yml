@@ -1,8 +1,8 @@
 ---
 applications:
 - name: myapp
-  memory: 128MB
-  disk_quota: 256MB
+  memory: 256MB
+  disk_quota: 512MB
   random-route: true
   buildpack: python_buildpack
   command: python hello.py
@@ -10,3 +10,6 @@ applications:
 env:
   APP_ENV: test
   FILE_LOCATION: /home/vcap/app/files
+  LD_LIBRARY: /home/vcap/app/Oracle
+  ORACLE_HOME: /home/vcap/app/Oracle
+  TNS_ADMIN: /home/vcap/app/Oracle

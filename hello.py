@@ -9,22 +9,22 @@ app = Flask(__name__)
 
 # Get port from environment variable or choose 9099 as local default
 port = int(os.getenv("PORT", 9099))
-home = str(os.getenv('HOME'))
+home = str(os.getenv('ORACLE_HOME'))
+env = str(os.getenv('APP_ENV', 'unknown'))
 
 @app.route('/')
 def hello_world():    
     msg = ' *** Hello World! I am instance ' + str(os.getenv("CF_INSTANCE_INDEX", 0))
-    env = str(os.getenv('APP_ENV', 'unknown'))
     return home + ' - ' + env + ' - ' + msg
 
 @app.route('/list')
 def listing():
-    return str(os.listdir(os.environ['HOME']))
+    return str(os.listdir(home))
 
 @app.route('/file')
 def file_processing():
     myfile = open(os.getenv('FILE_LOCATION', home) + '/readme.md')
-    sf = str(myfile)
+    sf = str(myfile.name)
     print sf
     return sf
 
